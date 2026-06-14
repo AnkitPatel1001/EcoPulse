@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 33% 98%;
+    --foreground: 20 14% 12%;
+    --card: 0 0% 100%;
+    --card-foreground: 20 14% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 20 14% 12%;
+    --primary: 142 71% 45%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 60 9% 94%;
+    --secondary-foreground: 24 10% 10%;
+    --muted: 60 9% 94%;
+    --muted-foreground: 25 5% 45%;
+    --accent: 60 9% 94%;
+    --accent-foreground: 24 10% 10%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 20 6% 90%;
+    --input: 20 6% 90%;
+    --ring: 142 71% 45%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 20 14% 8%;
+    --foreground: 60 9% 96%;
+    --card: 20 14% 10%;
+    --card-foreground: 60 9% 96%;
+    --popover: 20 14% 10%;
+    --popover-foreground: 60 9% 96%;
+    --primary: 142 71% 45%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 12 6% 15%;
+    --secondary-foreground: 60 9% 96%;
+    --muted: 12 6% 15%;
+    --muted-foreground: 24 5% 65%;
+    --accent: 12 6% 15%;
+    --accent-foreground: 60 9% 96%;
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 60 9% 96%;
+    --border: 12 6% 20%;
+    --input: 12 6% 20%;
+    --ring: 142 71% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Accessible focus states — never remove outlines */
+  :focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+  }
+
+  /* Smooth scrolling — respect user motion preference */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  /* Skip navigation link for screen reader / keyboard users */
+  .skip-link {
+    @apply absolute -top-full left-4 z-50 bg-eco-600 px-4 py-2 text-white rounded-b-xl focus:top-0 transition-all;
+  }
+}
+
+@layer utilities {
+  /* Respect reduced motion for all animations */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
